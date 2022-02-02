@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Primary Meta Tags -->
+  <title>Wordle Spoiler</title>
+  <meta name="title" content="Wordle Spoiler">
+  <meta name="description" content="Find answers for Wordle.">
+  <link rel="canonical" href="https://wordle-spoiler.droyson.xyz/" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wordle-spoiler.droyson.xyz">
+  <meta property="og:title" content="Wordle Spoiler">
+  <meta property="og:description" content="Find answers for Wordle.">
+  <meta property="og:image" content="https://wordle-spoiler.droyson.xyz/assets/wordle-spoiler-logos_transparent.png">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://wordle-spoiler.droyson.xyz">
+  <meta name="twitter:title" content="Wordle Spoiler">
+  <meta name="twitter:description" content="Find answers for Wordle.">
+  <meta name="twitter:image" content="https://wordle-spoiler.droyson.xyz/assets/wordle-spoiler-logos_transparent.png">
+  <meta name="twitter:creator" content="@d_royson">
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/wordle-spoiler-logos_transparent.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/wordle-spoiler-logos_transparent.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/wordle-spoiler-logos_transparent.png">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  </noscript>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    :root {
+      --background: #ffffff;
+      --fontColor: #121213;
+      --fontSize: 18px;
+      --borderColor: #d3d6da;
+    }
+
+    .nightmode {
+      --background: #121213;
+      --fontColor: #ffffff;
+      --borderColor: #3a3a3c
+    }
+
+    html,
+    body {
+      margin: 0px;
+      padding: 0px;
+      font-size: var(--fontSize);
+      background-color: var(--background);
+      color: var(--fontColor);
+    }
+
+    main {
+      height: 100%;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main header {
+      border-bottom: 1px solid var(--borderColor);
+      position: relative;
+    }
+
+    main h1 {
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      margin: 1rem 0;
+    }
+
+    main .container {
+      height: calc(100vh - 61px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    #date-picker {
+      margin: 0 0.25rem;
+    }
+
+    #answer {
+      margin: 1.5rem;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    .toggle-theme {
+      position: absolute;
+      top: 1rem;
+      right: 0.7rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 320px) {
+      :root {
+        --fontSize: 14px;
+      }
+
+      main .container {
+        height: calc(100vh - 55px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1>Wordle Spoiler</h1>
+      <span class="toggle-theme"></span>
+    </header>
+    <div class="container">
+      <div class="date-picker">
+        <label for="date-picker">
+          <span>Solution for</span>
+          <input type="date" name="pick date" id="date-picker" />
+          <span>is: </span>
+        </label>
+      </div>
+      <div id="answer"></div>
+      <div id="error"></div>
+    </div>
+  </main>
+  <script type="text/javascript">
+    (function () {
+      const darkTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      const toggleThemeBtn = document.getElementsByClassName('toggle-theme')[0];
+      const darkThemeClass = 'nightmode';
+      if (darkTheme.matches) {
+        document.body.classList.add(darkThemeClass);
+        toggleThemeBtn.innerText = '☀️';
+      } else {
+        document.body.classList.remove(darkThemeClass);
+        toggleThemeBtn.innerText = '🌙';
+      }
+
+      toggleThemeBtn.addEventListener('click', function () {
+        const hasDarkTheme = document.body.classList.contains(darkThemeClass);
+        document.body.classList.toggle(darkThemeClass);
+        toggleThemeBtn.innerText = hasDarkTheme ? '🌙' : '☀️';
+      });
+    })();
+  </script>
+  <script src="/js/main.js" type="text/javascript" async defer></script>
+  <script data-goatcounter="https://wordle-spoiler.goatcounter.com/count" async src="/js/goatcounter/count.js"></script>
+</body>
+
+</html>
