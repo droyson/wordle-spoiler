@@ -87,7 +87,7 @@
     }
 
     main .container {
-      height: calc(100vh - 61px);
+      height: calc(100vh - 90px);
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -114,13 +114,24 @@
       cursor: pointer;
     }
 
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      padding-bottom: 0.5rem;
+      color: var(--fontColor);
+    }
+
+    footer a {
+      color: var(--fontColor);
+    }
+
     @media screen and (max-width: 320px) {
       :root {
         --fontSize: 14px;
       }
 
       main .container {
-        height: calc(100vh - 55px);
+        height: calc(100vh - 75px);
       }
     }
   </style>
@@ -143,6 +154,8 @@
       <div id="answer"></div>
       <div id="error"></div>
     </div>
+    <footer>Made with ❤️ and 🎧 by <a href="https://droyson.xyz/" target="_blank" rel="noopener">droyson.xyz</a>
+    </footer>
   </main>
   <script type="text/javascript">
     (function () {
