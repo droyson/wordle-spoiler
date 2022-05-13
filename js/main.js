@@ -1,50 +1,55 @@
 (function (startDate, answers) {
-  const datePicker = document.getElementById('date-picker');
+  const datePicker = document.getElementById("date-picker");
 
   const dateChanged = function () {
-    const diff = new Date(state.date).setHours(0, 0, 0, 0) - new Date(startDate).setHours(0, 0, 0, 0);
+    const diff =
+      new Date(state.date).setHours(0, 0, 0, 0) -
+      new Date(startDate).setHours(0, 0, 0, 0);
     const diffInDays = Math.floor(diff / 864e5);
     const index = diffInDays % answers.length;
     state.answer = answers[index];
-  }
+  };
 
   const state = {};
-  Object.defineProperty(state, 'date', {
+  Object.defineProperty(state, "date", {
     get: function () {
       return datePicker.value ? new Date(datePicker.value) : new Date();
     },
     set: function (value) {
-      if (value && typeof value === 'string') {
+      if (value && typeof value === "string") {
         datePicker.value = value;
       }
       if (value instanceof Date) {
-        const d = value.getDate().toString().padStart(2, '0');
-        const m = (value.getMonth() + 1).toString().padStart(2, '0');
+        const d = value.getDate().toString().padStart(2, "0");
+        const m = (value.getMonth() + 1).toString().padStart(2, "0");
         const y = value.getFullYear();
-        datePicker.value = y + '-' + m + '-' + d;
+        datePicker.value = y + "-" + m + "-" + d;
       }
       dateChanged();
-    }
+    },
   });
 
-  Object.defineProperty(state, 'answer', {
+  Object.defineProperty(state, "answer", {
     set: function (value) {
-      const errorDiv = document.getElementById('error');
-      const answerDiv = document.getElementById('answer');
+      const errorDiv = document.getElementById("error");
+      const answerDiv = document.getElementById("answer");
       if (value) {
         answerDiv.innerText = value;
-        errorDiv.innerText = '';
+        errorDiv.innerText = "";
       } else {
-        errorDiv.innerText = "The game didn't begin before " + startDate.toDateString().split(' ').slice(1).join(' ') + ". Please select a day after this date.";
+        errorDiv.innerText =
+          "The game didn't begin before " +
+          startDate.toDateString().split(" ").slice(1).join(" ") +
+          ". Please select a day after this date.";
       }
-    }
+    },
   });
 
   // set default to today
   state.date = new Date();
 
-  datePicker.addEventListener('change', function (event) {
-    state.date = event.target.value
+  datePicker.addEventListener("change", function (event) {
+    state.date = event.target.value;
   });
 })(new Date(2021, 5, 19, 0, 0, 0, 0), [
   "cigar",
@@ -331,7 +336,6 @@
   "nymph",
   "found",
   "shall",
-  "harry",
   "stove",
   "lowly",
   "snout",
@@ -362,9 +366,7 @@
   "heist",
   "shown",
   "zesty",
-  "hasty",
   "trash",
-  "fella",
   "larva",
   "forgo",
   "story",
@@ -374,8 +376,8 @@
   "badge",
   "midst",
   "canny",
-  "fetus",
-  "butch",
+  "shine",
+  "gecko",
   "farce",
   "slung",
   "tipsy",
@@ -407,7 +409,6 @@
   "trait",
   "girth",
   "piety",
-  "payer",
   "goose",
   "float",
   "donor",
@@ -429,30 +430,24 @@
   "gawky",
   "hutch",
   "pinto",
-  "gaily",
   "egret",
   "lilac",
   "sever",
   "field",
   "fluff",
-  "hydro",
-  "flack",
   "agape",
   "voice",
   "stead",
-  "stalk",
   "berth",
   "madam",
   "night",
   "bland",
   "liver",
   "wedge",
-  "augur",
   "roomy",
   "wacky",
   "flock",
   "angry",
-  "bobby",
   "trite",
   "aphid",
   "tryst",
@@ -485,14 +480,11 @@
   "twang",
   "shrug",
   "treat",
-  "unlit",
   "waste",
   "merit",
   "woven",
-  "octal",
   "needy",
   "clown",
-  "widow",
   "irony",
   "ruder",
   "gauze",
@@ -513,17 +505,14 @@
   "booze",
   "alpha",
   "thyme",
-  "eclat",
   "doubt",
   "parer",
   "chute",
   "stick",
   "trice",
   "alike",
-  "sooth",
   "recap",
   "saint",
-  "liege",
   "glory",
   "grate",
   "admit",
@@ -545,7 +534,6 @@
   "valid",
   "ionic",
   "equal",
-  "unset",
   "floor",
   "catch",
   "spade",
@@ -570,9 +558,6 @@
   "photo",
   "dream",
   "stale",
-  "vomit",
-  "ombre",
-  "fanny",
   "unite",
   "snarl",
   "baker",
@@ -2311,8 +2296,6 @@
   "undid",
   "intro",
   "basal",
-  "shine",
-  "gecko",
   "rodeo",
   "guard",
   "steer",
@@ -2355,5 +2338,27 @@
   "rower",
   "artsy",
   "rural",
-  "shave"
+  "shave",
+  "bobby",
+  "eclat",
+  "fella",
+  "gaily",
+  "harry",
+  "hasty",
+  "hydro",
+  "liege",
+  "octal",
+  "ombre",
+  "payer",
+  "sooth",
+  "unset",
+  "unlit",
+  "vomit",
+  "fanny",
+  "fetus",
+  "butch",
+  "stalk",
+  "flack",
+  "widow",
+  "augur",
 ]);
